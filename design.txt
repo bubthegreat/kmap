@@ -40,4 +40,9 @@ kmap character name
     - Set, isn't saved.
 kmap speedwalk on|off
     - Toggles on empty
+
+
+
+-- Maybe do something with these, but probably defunct.
 kmap arealock?
+kmap export/import areas?
