@@ -991,7 +991,7 @@ local function traceFunc()
 end
 
 local function config()
-    traceFunc()
+    if map.configs ~= nil then traceFunc() end
     local defaults = map.defaults
     local configs = map.configs or {}
     local path = kmapPath
@@ -1038,7 +1038,6 @@ local function config()
         end
     setmetatable(map, mt)
     map.set("mode", configs.mode)
-    map.set("version", version)
 
     local saves = {}
     if io.exists(path.."/map_save.json") then
@@ -1107,6 +1106,7 @@ end
 local bool_configs = {'stretch_map', 'search_on_look', 'speedwalk_wait', 'speedwalk_random',
     'clear_lines_on_send', 'debug', 'custom_name_search', 'use_translation'}
 -- function intended to be used by an alias to change config values and save them to a file for later
+
 function map.setConfigs(key, val, sub_key)
     traceFunc()
     if val == "off" or val == "false" then
