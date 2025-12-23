@@ -1,0 +1,28 @@
+Design goals:
+
+
+Work on top of CFGUI without dependencies.
+Show how work was derives from generic_mapper package.
+
+All kmap package files stored in a single place that can be version controlled (git).
+    - Files stored in profileDir/kmap or kmapdata.
+Configuration files stored in consistent json files so save configs can be tracked.
+    - New json helpers script to help with this. 
+
+Map in floating window (can move to another screen)
+
+All aliases in default form of kmap object action arguments.
+    - Short alias examples using expandAlias()
+
+
+Map defaults to ne for up and sw for down for mapping purposes so the map is 2D by default.
+
+
+Configs:
+
+kmap mode two, one, maze
+    - Sets the mode of map to connect rooms in both directions (generic_mapper normal mode), one direction (generic_mapper complex mode), or maze mode (no linking + stuff)
+kmap loglevel quiet, error, info, debug, trace
+    - Determines how noisy the mapper is with echos.
+kmap movemethod add
+kmap movemethod del

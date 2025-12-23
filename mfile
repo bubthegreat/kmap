@@ -1,0 +1,10 @@
+{
+       "package": "kmap",
+       "title": "KMap Mudlet Package",
+       "description": "Custom CF Mapping Script",
+       "version": "0.1",
+       "author": "K",
+       "icon": "",
+       "dependencies": "mapaddons-safe-delete, mpkg",
+       "outputFile": true
+}

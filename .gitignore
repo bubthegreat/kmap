@@ -1,0 +1,8 @@
+# Ignore build directory and .output file
+build/
+.output
+map.dat
+
+# Ignore any file starting with "muddle" in the project root directory
+/muddle*
+__pycache__/
