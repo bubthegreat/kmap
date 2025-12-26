@@ -6,8 +6,13 @@ local object = kmaparray[1]
 
 if object == "area" then
     local action = kmaparray[2]
-    if action == "getall" then
+    local args = table.concat(kmaparray, " ", 3, table.size(kmaparray))
+    if action == "get" then
         enableTrigger("KArea Capture Data")
-        send("area all")
+        send("area "..args)
+    elseif action == "del" then
+        map.deleteArea(args, true)
+    elseif action == "list" then
+        map.echoAreaList()
     end
 end
