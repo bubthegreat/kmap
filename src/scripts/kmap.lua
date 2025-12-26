@@ -922,7 +922,7 @@ map.defaults = {
         wd = 'wd', wu = 'wu', westdown = 'westdown', westup = 'westup',
     },
     debug = false,
-    loglevel = LOG_LEVELS.DEBUG,
+    loglevel = LOG_LEVELS.TRACE,
 }
 
 local move_queue, lines = {}, {}

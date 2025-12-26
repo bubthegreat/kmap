@@ -38,7 +38,7 @@ if object == "loglevel" then
     local action = kmaparray[2]
     local args = table.concat(kmaparray, " ", 3, table.size(kmaparray))
     if action == "show" then
-        map.log(LOG_LEVELNAMES[map.configs.loglevel], "INFO")
+        map.log("Log level is: "..LOG_LEVELNAMES[map.configs.loglevel], "INFO")
     elseif action == "set" then
         if table.contains(LOG_LEVELNAMES, string.upper(args)) then
             map.setConfigs("loglevel", LOG_LEVELS[string.upper(args)])
