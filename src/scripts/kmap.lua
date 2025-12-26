@@ -26,8 +26,8 @@ map.help = {[[
             either the area of the room the user is currently in or the area name provided.
         <link: kmap_stop>kmap stop</link> - Stops adding content to the map and speedwalking.
         <link: kmap_save>kmap save</link> - Creates a backup of the map in .dat and .json format.
-        <link: kmap_area>kmap area</link> - Provides get, del, list, and create functions.
-        <link: kmap_room>kmap room <area name></link> - Provides show, find, look, merge, mergedn, area, and shift functions.
+        <link: kmap_area>kmap area <cmd></link> - Provides get, del, list, and create functions.
+        <link: kmap_room>kmap room <cmd></link> - Provides show, find, look, merge, mergedn, area, and shift functions.
         <link: kmap_move>kmap move <cmd></link> - Provides show, clear functions.
         <link: kmap_loglevel>kmap loglevel <cmd></link> - Provides show, set, for loglevels.
 
@@ -50,7 +50,6 @@ map.help = {[[
 
         <link: set exit>set exit <direction> <roomID></link> - Creates a one-way exit in the given
             direction to the room with the specified roomID, can also be used with portals.
-        <link: arealock>arealock [area name]</link> - Displays a list of areas you can lock/unlock.
         <link: export>map export <area name></link> - Creates a file from the named area that can
             be shared.
         <link: import>map import <area name></link> - Loads an area from a file.
@@ -117,7 +116,7 @@ map.help.import = [[
         underscores between words. The actual area name is stored within the
         file, and is not set by the area name used in this command.
 ]]
-map.help.start = [[
+map.help.kmap_start = [[
     <cyan>KMap Start<reset>
         syntax: <yellow>kmap start [exact area name]<reset>
 
@@ -138,31 +137,35 @@ map.help.movemethod = [[
         If the given method is already in the list of movement methods, that
         method will be removed from the list.
 ]]
-map.help.area = [[
+map.help.kmap_area = [[
     <cyan>KMap Area<reset>
-        syntax: <yellow>kmap area<reset>
+        syntax: <yellow>kmap area <cmd> <args><reset>
 
-        get:  Send area command to pre-populate areas.
+        get:  Send area command to pre-populate areas.  i.e. kmap area get all
         list: Display list of areas and rooms in each.
-        del:  Delete an area.
+        del:  Delete an area.  i.e. kmap area del Galadon
 
-        create:  Makes an area.  Use get instead.
+        create:  Makes an area.  Use get instead.  i.e. kmap area create TempArea
 ]]
-map.help.rooms = [[
-    <cyan>Map Rooms<reset>
-        syntax: <yellow>map rooms <area name><reset>
+map.help.kmap_room = [[
+    <cyan>KMap Room<reset>
+        syntax: <yellow>kmap room <cmd> <args><reset>
 
-        This command shows a list of all rooms in the area, with the roomID and
-        the room name, as well as a count of how many rooms are in the area
-        total. Note that the area name argument is not case sensitive.
+        show:  Shows list of rooms in current area or provided area
+        find:  Finds room by room name.
+        merge: Merges overlapping rooms if room names match.  Doesn't always do the right thing with exits.
+        mergedn:  Merges overlapping rooms regardless of room name match.  Use for rooms that change by time of day.
+        area:  Move current room to provided area.
+        shift: Shift current room in direction.
 ]]
-map.help.set_area = [[
-    <cyan>Set Area<reset>
-        syntax: <yellow>set area <area name><reset>
+map.help.kmap_loglevel = [[
+    <cyan>KMap LogLevel<reset>
+        syntax: <yellow>kmap loglevel <cmd> <args><reset>
 
-        This command move the current room into the named area, creating the
-        area if needed.
+        show:  Shows current loglevel from: "QUIET", "ERROR", "INFO", "DEBUG", "TRACE"
+        set:   Sets loglevel to one of: "QUIET", "ERROR", "INFO", "DEBUG", "TRACE"
 ]]
+
 map.help.mode = [[
     <cyan>Map Mode<reset>
         syntax: <yellow>map mode <lazy, simple, normal, or complex><reset>
@@ -183,29 +186,16 @@ map.help.mode = [[
         In complex mode, none of the exits of the newly connected room are
         connected automatically when it is created.
 ]]
-map.help.shift = [[
-    <cyan>Shift<reset>
-        syntax: <yellow>shift <direction><reset>
-
-        This command moves the current room one step in the direction given, on
-        the map.
-]]
-map.help.merge_rooms = [[
-    <cyan>Merge Rooms<reset>
-        syntax: <yellow>merge rooms<reset>
-
-        This command combines all rooms that share the same coordinates and the
-        same room name into a single room, with all of the exits preserved and
-        combined.
-]]
-map.help.clear_moves = [[
-    <cyan>Clear Moves<reset>
-        syntax: <yellow>clear moves<reset>
-
-        This command clears the script's queue of movement commands, and is
+map.help.kmap_move = [[
+    <cyan>KMap Move<reset>
+        syntax: <yellow>kmap move <cmd><reset>
+        
+        clear:  This command clears the script's queue of movement commands, and is
         intended to be used after you attempt to move while mapping but the
         movement is prevented in some way that is not caught and handled by a
         trigger that raises the onMoveFail event.
+
+        show:   Shows the movement queue.
 ]]
 map.help.set_exit = [[
     <cyan>Set Exit<reset>
@@ -271,29 +261,6 @@ map.help.onprompt = [[
         functionality is intended to allow people who have used the older
         version of this script to use this script instead, without having to
         modify the triggers they created for it.
-]]
-map.help.me = [[
-    <cyan>Map Me<reset>
-        syntax: <yellow>map me<reset>
-
-        This command forces the script to look at the currently captured room
-        name and exits, and search for a potentially matching room, moving the
-        map if applicable. Note that this command is generally never needed, as
-        the script performs a similar search any time the room name and exits
-        don't match expectations.
-]]
-map.help.path = [[
-    <cyan>Map Path<reset>
-        syntax: <yellow>map path <room name> [; area name]<reset>
-
-        This command tries to find a walking path from the current room to the
-        named room. If an area name is given, only rooms within that area that
-        is given are checked. Neither the room name nor the area name are case
-        sensitive, but otherwise an exact match is required. Note that a
-        semicolon is required between the room name and area name, if an area
-        name is given, but spaces before or after the semicolon are optional.
-
-        Example: <yellow>map path main street ; newbie town<reset>
 ]]
 map.help.character = [[
     <cyan>Map Character<reset>
@@ -394,64 +361,9 @@ map.help.quick_start = [[
        Will send "area all" command and capture output to prepopulate areas.
     2. <link: kmap_start>kmap start <exact area name></link>
        Starts mapping the in provided area.  i.e. "The Academy"
-    3. <link: 1>map help</link>
+    3. <link: 1>kmap help</link>
        This will bring up a more detailed help file, starting with the available
        help topics.
-]]
-map.help.room_find = [[
-    <cyan>Room Find<reset>
-        syntax: <yellow>room find <room name><reset>
-                <yellow>rf <room name><reset>
-
-        This command will search all rooms and return a list of matches.
-]]
-map.help.room_look = [[
-    <cyan>Room Look<reset>
-        syntax: <yellow>room look [roomID]<reset>
-                <yellow>rl [roomID]<reset>
-
-        This command will display detailed information about the current room.
-        Optionally a roomID can be provided.
-]]
-map.help.area_add = [[
-    <cyan>Area Add<reset>
-        syntax: <yellow>area add <area name><reset>
-
-        This command will create a new area and automatically give it an ID.
-
-        Example: <yellow>area add My City<reset> - create a new area called My City
-]]
-map.help.area_delete = [[
-    <cyan>Area Delete<reset>
-        syntax: <yellow>area delete <area name><reset>
-
-        This command will delete the given area. If the area is really big
-        (thousands of rooms), deleting it at once would take a really long
-        while and freeze your Mudlet while doing so. To combat the unpleasant
-        experience, the script breaks up area deletion into batches of rooms
-        (100 by default). While this still heavily impacts Mudlets performance,
-        it allows you to see a progress meter of how far it has gotten and gives
-        you an ability to pause it at any time by doing 'cancel area deletion'.
-
-        Example: <yellow>area delete My City<reset> - delete an area called My City
-]]
-map.help.arealock = [[
-    <cyan>Arealock<reset>
-        syntax: <yellow>arealock [filter]<reset>
-
-        This command displays a list of areas you can lock/unlock, you can also
-        give it an area name to filter by. If an area is locked the mapper will
-        not attempt to speedwalk or go through any of the rooms in the area.
-
-        Example: <yellow>arealock City<reset>
-]]
-map.help.kmap_room_area = [[
-    <cyan>KMap Room Area<reset>
-        syntax: <yellow>kmap room area <area name|areaID><reset>
-
-        This command moves the current room to another area.
-
-        Example: <yellow>kmap room area Galadon<reset> - move the room you're in to 'Galadon'.
 ]]
 
 
