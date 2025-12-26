@@ -28,7 +28,7 @@ map.help = {[[
     <cyan>Fundamental Commands:<reset>
         These are commands used to get the mapper functional on a basic level.
 
-        <link: quick start>map basics</link> - Shows a quick-start guide with some basic information to
+        <link: quick start>quick start</link> - Shows a quick-start guide with some basic information to
             help get the script working.
         <link: 1>map help [command name]</link> - Shows either this help file or the help file for the
             command given.
@@ -163,23 +163,14 @@ map.help = {[[
             in, according to the script.
 ]]}
 map.help.save = [[
-    <cyan>Map Save<reset>
-        syntax: <yellow>map save<reset>
+    <cyan>kmap Save<reset>
+        syntax: <yellow>kmap save<reset>
 
         This command creates a copy of the current map and stores it in the
-        profile folder as map.dat. This can be useful for creating a backup
+        profile/kmapdata folder as map.dat. This can be useful for creating a backup
         before adding new content, in case of problems, and as a way to share an
-        entire map at once.
-]]
-map.help.load = [[
-    <cyan>Map Load<reset>
-        syntax: <yellow>map load <optional download address><reset>
-
-        This command replaces the current map with the map stored as map.dat in
-        the profile folder. Alternatively, if a download address is provided, a
-        map is downloaded from that location and loaded to replace the current
-        map. If no filename is given with the download address, the script tries
-        to download map.dat. If a filename is given it MUST end with .dat.
+        entire map at once.  It also stores the map in json format for revision
+        control purposes.
 ]]
 map.help.export = [[
     <cyan>Map Export<reset>
@@ -202,16 +193,13 @@ map.help.import = [[
         underscores between words. The actual area name is stored within the
         file, and is not set by the area name used in this command.
 ]]
-map.help.start_mapping = [[
-    <cyan>Start Mapping<reset>
-        syntax: <yellow>start mapping [area name]<reset>
+map.help.start = [[
+    <cyan>KMap Start<reset>
+        syntax: <yellow>kmap start [exact area name]<reset>
 
-        This command instructs the script to add new content to the map when it
-        is seen. When first used, an area name is mandatory, so that an area is
-        created for new rooms to be placed in. If used with an area name while
-        the map shows the character within a room on the map, that room will be
-        moved to be in the named area, if it is not already in it. If used
-        without an area name, the room is not moved, and mapping begins in the
+        This command instructs the script to add new content to the map.  It
+        requires an exact area name of a pre-existing area.  "kmap area get all"
+        to pre-populate areas. If used without an area name mapping begins in the
         area the character is currently located in.
 ]]
 map.help.movemethod = [[
