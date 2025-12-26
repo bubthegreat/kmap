@@ -30,19 +30,20 @@ kmap stop
 kmap save
     - save map (and json map) to kmapdata dir (for gitification)
 
-kmap mode two, one, maze
-    - Sets the mode of map to connect rooms in both directions (generic_mapper normal mode), one direction (generic_mapper complex mode), or maze mode (no linking + stuff)
 kmap loglevel quiet, error, info, debug, trace
     - Determines how noisy the mapper is with echos.
+kmap area get, del, list
+    - get areas from area command, delete area, list all areas.
+
+
 kmap movemethod mv
     - Add if not present, remove if present
 kmap character name
     - Set, isn't saved.
 kmap speedwalk on|off
     - Toggles on empty
-kmap area get, del, list
-    - get areas from area command, delete area, list all areas.
-
+kmap mode two, one, maze
+    - Sets the mode of map to connect rooms in both directions (generic_mapper normal mode), one direction (generic_mapper complex mode), or maze mode (no linking + stuff)
 
 
 -- Maybe do something with these, but probably defunct.
