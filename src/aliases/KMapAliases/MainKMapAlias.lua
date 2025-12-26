@@ -1,6 +1,6 @@
 local kmapcmd = matches[2]
 
-local kmaparray = string.split(kmaparray)
+local kmaparray = string.split(kmapcmd)
 
 local object = kmaparray[1]
 
