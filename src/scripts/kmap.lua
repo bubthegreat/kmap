@@ -1210,8 +1210,12 @@ function map.log(what, level)
     else
       level = LOG_LEVELS["ERROR"]
     end
-    if level <= map.configs.loglevel then
-        print_log(what, level)
+    if map.configs.loglevel ~= nil then
+        if level <= map.configs.loglevel then
+            print_log(what, level)
+        end
+    else
+        print_log(what, LOG_LEVELS["TRACE"])
     end
 end
 
