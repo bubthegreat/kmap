@@ -1721,7 +1721,7 @@ local function find_area(name)
     end
     --if not areaID then areaID = addAreaName(name) end
     if not areaID then
-        show_err("Invalid Area. No such area found, and area could not be added.",true)
+        map.log("Invalid Area. No such area found, and area could not be added.","ERROR")
     end
     map.set("currentArea", areaID)
 end
@@ -1732,7 +1732,7 @@ function map.set_exit(dir,roomID)
     if map.mapping then
         roomID = tonumber(roomID)
         if not roomID then
-            show_err("Set Exit: Invalid Room ID")
+            map.log("Set Exit: Invalid Room ID". "ERROR")
         end
         if not table.contains(exitmap,dir) and not string.starts(dir, "-p ") then
             map.log("Set Exit: Invalid Direction", "ERROR")
@@ -1852,7 +1852,7 @@ function map.import_area(name)
     local tbl = {}
     table.load(name,tbl)
     if table.is_empty(tbl) then
-        show_err("No file found")
+        map.log("No file found", "ERROR")
     end
     local areas = getAreaTable()
     local areaID = areas[tbl.name] or addAreaName(tbl.name)

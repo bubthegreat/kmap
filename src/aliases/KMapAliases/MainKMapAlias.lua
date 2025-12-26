@@ -48,6 +48,26 @@ if object == "loglevel" then
     end
 end
 
+if object == "room" then
+    local action = kmaparray[2]
+    local args = table.concat(kmaparray, " ", 3, table.size(kmaparray))
+    display(args)
+    if action == "show" then
+        if args == "" then args = nil end
+        map.echoRoomList(args or getRoomArea(map.currentRoom))
+    elseif action == "find" then
+        map.roomFind(args)
+    elseif action == "look" then
+        map.roomLook(args)
+    elseif action == "merge" then
+        map.merge_rooms()
+    elseif action == "mergedn" then
+        map.merge_daynight_rooms()
+    elseif action == "area" then
+        map.set_area(args)
+    end
+end
+
         
     
 

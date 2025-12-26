@@ -140,13 +140,6 @@
               "isFolder": "no"
        },
        {
-              "name": "Move Room To Another Area Alias",
-              "isActive": "yes",
-              "regex": "^room area (?:v(\\d+) )?(.+)$",
-              "script": "",
-              "isFolder": "no"
-       },
-       {
               "name": "Add a Room Label Alias",
               "isActive": "yes",
               "regex": "^room label (.+)$",

@@ -7,13 +7,6 @@
               "isFolder": "no"
        },
        {
-              "name": "Map Stop Alias",
-              "isActive": "yes",
-              "regex": "^map stop$",
-              "script": "",
-              "isFolder": "no"
-       },
-       {
               "name": "Toggle Speedwalk Alias",
               "isActive": "yes",
               "regex": "^mpp(?:\\s?(on|off))?$",

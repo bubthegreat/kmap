@@ -1,19 +1,5 @@
 [
        {
-              "name": "Map Quick Start Alias",
-              "isActive": "yes",
-              "regex": "^map basics$",
-              "script": "",
-              "isFolder": "no"
-       },
-       {
-              "name": "Map Help Alias",
-              "isActive": "yes",
-              "regex": "^map help(?: (.*))?$",
-              "script": "",
-              "isFolder": "no"
-       },
-       {
               "name": "Map Rooms Alias",
               "isActive": "yes",
               "regex": "^map rooms(?: (.+))?$",
@@ -38,20 +24,6 @@
               "name": "Show Path Alias",
               "isActive": "yes",
               "regex": "^showpath(?: (\\d+))?(?: (\\d+))?$",
-              "script": "",
-              "isFolder": "no"
-       },
-       {
-              "name": "List Special Exits Alias",
-              "isActive": "yes",
-              "regex": "^spe list(?: (.+))?$",
-              "script": "",
-              "isFolder": "no"
-       },
-       {
-              "name": "List Map Features Alias",
-              "isActive": "yes",
-              "regex": "^feature list$",
               "script": "",
               "isFolder": "no"
        }
