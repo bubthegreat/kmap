@@ -19,9 +19,7 @@ elseif object == "save" then
     else
         map.log("Error.  Map NOT saved.\n", "ERROR")
     end
-end
-
-if object == "area" then
+elseif object == "area" then
     local action = kmaparray[2]
     local args = table.concat(kmaparray, " ", 3, table.size(kmaparray))
     if action == "get" then
@@ -40,11 +38,10 @@ if object == "area" then
         setAreaName( newid, args )
         map.log(string.format("Created new area %s (%d), but shouldn't you use the area command?", args, newid), "INFO")
         centerview(map.currentRoom)
+    else
+        map.log("Unkown kmap "..object.." command.", "ERROR")
     end
-    map.log("Unkown "..object.." command.", "ERROR")
-end
-
-if object == "loglevel" then
+elseif object == "loglevel" then
     local action = kmaparray[2]
     local args = table.concat(kmaparray, " ", 3, table.size(kmaparray))
     if action == "show" then
@@ -55,11 +52,10 @@ if object == "loglevel" then
         else
             map.log("Log level must be one of "..table.concat(LOG_LEVELNAMES, " "), "ERROR")
         end
+    else
+        map.log("Unkown kmap "..object.." command.", "ERROR")
     end
-    map.log("Unkown "..object.." command.", "ERROR")
-end
-
-if object == "room" then
+elseif object == "room" then
     local action = kmaparray[2]
     local args = table.concat(kmaparray, " ", 3, table.size(kmaparray))
     if action == "show" then
@@ -75,17 +71,21 @@ if object == "room" then
         map.merge_daynight_rooms()
     elseif action == "area" then
         map.set_area(args)
+    elseif action == "shift" then
+        map.shift_room(args)
+    else
+        map.log("Unkown kmap "..object.." command.", "ERROR")
     end
-    map.log("Unkown "..object.." command.", "ERROR")
-end
-
-if object == "move" then
+elseif object == "move" then
     local action = kmaparray[2]
     local args = table.concat(kmaparray, " ", 3, table.size(kmaparray))
     if action == "show" then
         map.show_moves()
     elseif action == "clear" then
         map.clear_moves()
+    else
+        map.log("Unkown kmap "..object.." command.", "ERROR")
     end
-    map.log("Unkown "..object.." command.", "ERROR")
+else
+    map.log("Unkown kmap command.", "ERROR")
 end

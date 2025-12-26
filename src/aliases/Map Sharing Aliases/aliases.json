@@ -1,12 +1,5 @@
 [
        {
-              "name": "Save Map Alias",
-              "isActive": "yes",
-              "regex": "^map save$",
-              "script": "",
-              "isFolder": "no"
-       },
-       {
               "name": "Import Map Area Alias",
               "isActive": "yes",
               "regex": "^map import (.*)",
